@@ -21,7 +21,7 @@ struct Movie: Decodable{
     let trackTimeMillis: Int
 }
 
-struct APIResponse: Decodable{
+struct MovieSearchResponse: Decodable{
     let resultCount: Int
     let results: [Movie]
 }

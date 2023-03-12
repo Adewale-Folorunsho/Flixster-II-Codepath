@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3853165829BDBA7100D680AC /* PostersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853165729BDBA7100D680AC /* PostersViewController.swift */; };
+		3853165A29BDBBE200D680AC /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853165929BDBBE200D680AC /* Poster.swift */; };
+		3853165E29BDC9F500D680AC /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853165D29BDC9F500D680AC /* PosterCell.swift */; };
 		CB7254DF2939D37800F531FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7254DE2939D37800F531FB /* AppDelegate.swift */; };
 		CB7254E12939D37800F531FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7254E02939D37800F531FB /* SceneDelegate.swift */; };
 		CB7254E32939D37800F531FB /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7254E22939D37800F531FB /* MoviesViewController.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3853165729BDBA7100D680AC /* PostersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostersViewController.swift; sourceTree = "<group>"; };
+		3853165929BDBBE200D680AC /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
+		3853165D29BDC9F500D680AC /* PosterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
 		CB7254DB2939D37800F531FB /* flixster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flixster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7254DE2939D37800F531FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB7254E02939D37800F531FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +72,9 @@
 			children = (
 				CB7254F7293B224F00F531FB /* Models */,
 				CB7254F8293B58DA00F531FB /* MovieCell.swift */,
+				3853165729BDBA7100D680AC /* PostersViewController.swift */,
 				CB7254E22939D37800F531FB /* MoviesViewController.swift */,
+				3853165D29BDC9F500D680AC /* PosterCell.swift */,
 				CB8B1546293EFCA100397B69 /* DetailViewController.swift */,
 				CB7254DE2939D37800F531FB /* AppDelegate.swift */,
 				CB7254E02939D37800F531FB /* SceneDelegate.swift */,
@@ -82,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				CB7254F5293B224000F531FB /* Movie.swift */,
+				3853165929BDBBE200D680AC /* Poster.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -165,9 +174,12 @@
 			files = (
 				CB7254F9293B58DA00F531FB /* MovieCell.swift in Sources */,
 				CB7254E32939D37800F531FB /* MoviesViewController.swift in Sources */,
+				3853165E29BDC9F500D680AC /* PosterCell.swift in Sources */,
 				CB7254DF2939D37800F531FB /* AppDelegate.swift in Sources */,
 				CB8B1547293EFCA100397B69 /* DetailViewController.swift in Sources */,
+				3853165A29BDBBE200D680AC /* Poster.swift in Sources */,
 				CB7254E12939D37800F531FB /* SceneDelegate.swift in Sources */,
+				3853165829BDBA7100D680AC /* PostersViewController.swift in Sources */,
 				CB7254F6293B224000F531FB /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

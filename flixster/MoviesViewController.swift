@@ -53,7 +53,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
                 // Use the JSON decoder to try and map the data to our custom model.
                 // TrackResponse.self is a reference to the type itself, tells the decoder what to map to.
-                let response = try decoder.decode(APIResponse.self, from: data)
+                let response = try decoder.decode(MovieSearchResponse.self, from: data)
 
                 // Access the array of tracks from the `results` property
                 
@@ -76,7 +76,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
         // Initiate the network request
         task.resume()
 
-        print(movies)
 
         tableView.dataSource = self
         
