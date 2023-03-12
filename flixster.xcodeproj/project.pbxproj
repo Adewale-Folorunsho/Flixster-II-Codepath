@@ -72,9 +72,9 @@
 			children = (
 				CB7254F7293B224F00F531FB /* Models */,
 				CB7254F8293B58DA00F531FB /* MovieCell.swift */,
+				3853165D29BDC9F500D680AC /* PosterCell.swift */,
 				3853165729BDBA7100D680AC /* PostersViewController.swift */,
 				CB7254E22939D37800F531FB /* MoviesViewController.swift */,
-				3853165D29BDC9F500D680AC /* PosterCell.swift */,
 				CB8B1546293EFCA100397B69 /* DetailViewController.swift */,
 				CB7254DE2939D37800F531FB /* AppDelegate.swift */,
 				CB7254E02939D37800F531FB /* SceneDelegate.swift */,

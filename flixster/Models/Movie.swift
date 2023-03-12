@@ -10,20 +10,24 @@ import Foundation
 // TODO: Pt 1 - Create a Track model struct
 
 struct Movie: Decodable{
-    let trackName: String
-    let artistName: String
-    let artworkUrl100: URL
+    let original_title: String
+    let overview: String
+    let poster_path: String
+    let vote_average: Float
+    let release_date: String
+}
 
-    // Detail properties
-    let collectionName: String
-    let primaryGenreName: String
-    let releaseDate: Date
-    let trackTimeMillis: Int
+struct Date: Decodable{
+    let maximum: String
+    let minimum: String
 }
 
 struct MovieSearchResponse: Decodable{
-    let resultCount: Int
+    let page: Int
     let results: [Movie]
+    let dates: Date
+    let total_pages: Int
+    let total_results: Int
 }
 
 // TODO: Pt 1 - Create an extension with a mock tracks static var

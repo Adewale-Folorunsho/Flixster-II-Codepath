@@ -18,7 +18,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
 
         // TODO: Pt 1 - Set tracks property with mock tracks array
 //        movies = Movie.mockMovies
-        let url = URL(string: "https://itunes.apple.com/search?term=blackpink&attribute=artistTerm&entity=song&media=music")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=40bc027665dfe203490794907e15ed9a")!
 
         // Use the URL to instantiate a request
         let request = URLRequest(url: url)
@@ -58,6 +58,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
                 // Access the array of tracks from the `results` property
                 
                 let movies = response.results
+                print(movies)
                 
                 DispatchQueue.main.async {
 
@@ -75,10 +76,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
 
         // Initiate the network request
         task.resume()
-
-
         tableView.dataSource = self
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
