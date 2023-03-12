@@ -20,22 +20,23 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Nuke.loadImage(with: URL(string: "https://image.tmdb.org/t/p/original/" + movie.poster_path)!, into: trackImageView)
+        if movie.poster_path != nil{
+            Nuke.loadImage(with: URL(string: "https://image.tmdb.org/t/p/original/" + movie.poster_path!)!, into: trackImageView)
+        }
         overviewLabel.text = movie.overview
         titleLabel.text = movie.original_title
         ratingLabel.text = String(movie.vote_average)
         dateLabel.text = String(movie.release_date)
-
-//        // Create a date formatter to style our date and convert it to a string
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateStyle = .medium
-//        releaseDateLabel.text = dateFormatter.string(from: movie.releaseDate)
-//
-//        // Use helper method to convert milliseconds into `mm:ss` string format
-//        durationLabel.text = formattedTrackDuration(with: movie.trackTimeMillis)
-
     }
-
-
+    
+    @IBAction func tapTitle(_ sender: UITapGestureRecognizer) {
+        print("tapped")
+        if let tappedView = sender.view {
+            performSegue(withIdentifier: "similarMovieSegue", sender: tappedView)
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let similarMoviesViewController = segue.destination as? SimilarMoviesViewController
+        similarMoviesViewController?.movieId = movie.id
+    }
 }

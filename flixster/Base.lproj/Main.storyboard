@@ -109,6 +109,7 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Mpr-re-4iS">
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="100"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="2fg-fn-UGo"/>
                                                 </constraints>
@@ -116,7 +117,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gbD-0v-hcS">
-                                        <rect key="frame" x="0.0" y="124.00000000000001" width="277.66666666666669" height="54.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="124.00000000000001" width="142" height="54.666666666666671"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18V-90-Rj8">
                                                 <rect key="frame" x="0.0" y="0.0" width="35" height="20.333333333333332"/>
@@ -124,13 +125,15 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLACKPINK &amp; Selena Gomez" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozz-WL-4xL">
-                                                <rect key="frame" x="0.0" y="28.333333333333314" width="277.66666666666669" height="26.333333333333329"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Movie" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozz-WL-4xL">
+                                                <rect key="frame" x="0.0" y="28.333333333333314" width="142" height="26.333333333333329"/>
+                                                <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <gestureRecognizers/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ro5-9F-7tX">
                                         <rect key="frame" x="0.0" y="202.66666666666669" width="119.66666666666667" height="54.666666666666686"/>
@@ -187,10 +190,14 @@
                                         <rect key="frame" x="0.0" y="438.66666666666663" width="50" height="50"/>
                                     </stackView>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="nVr-Pz-D41" secondAttribute="trailing" id="8so-d8-Ndm"/>
                                     <constraint firstItem="nVr-Pz-D41" firstAttribute="leading" secondItem="NI1-Np-UZW" secondAttribute="leading" id="cBL-zh-e13"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="SFA-Bv-61A" appends="YES" id="8uO-yv-rmL"/>
+                                </connections>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HUU-VG-8W2"/>
@@ -209,11 +216,17 @@
                         <outlet property="ratingLabel" destination="EPE-1b-Le6" id="iDr-9r-Bcc"/>
                         <outlet property="titleLabel" destination="ozz-WL-4xL" id="zeB-Xi-56o"/>
                         <outlet property="trackImageView" destination="Mpr-re-4iS" id="pa0-sR-fqt"/>
+                        <segue destination="xtB-12-03l" kind="show" identifier="similarMovieSegue" id="JYd-U5-qlu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hm6-RZ-mgj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SFA-Bv-61A">
+                    <connections>
+                        <action selector="tapTitle:" destination="WgW-3b-CZ7" id="MzL-3t-Mtm"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3677.0992366412211" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="2859" y="824"/>
         </scene>
         <!--Movies-->
         <scene sceneID="pe2-cI-OjY">
@@ -234,7 +247,7 @@
             </objects>
             <point key="canvasLocation" x="2052.6717557251909" y="3.5211267605633805"/>
         </scene>
-        <!--Albums-->
+        <!--Posters-->
         <scene sceneID="pdY-Vp-Bfh">
             <objects>
                 <viewController id="O8B-6p-uTs" customClass="PostersViewController" customModule="flixster" customModuleProvider="target" sceneMemberID="viewController">
@@ -245,8 +258,8 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sC6-af-FHa">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tfx-yL-bil">
-                                    <size key="itemSize" width="390" height="484"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="tfx-yL-bil">
+                                    <size key="itemSize" width="393" height="484"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -261,6 +274,10 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s9C-8q-8uV">
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="484"/>
+                                                    <gestureRecognizers/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="iZt-Vu-HC7" appends="YES" id="8jI-xs-YEy"/>
+                                                    </connections>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -273,6 +290,7 @@
                                         <size key="customSize" width="390" height="484"/>
                                         <connections>
                                             <outlet property="posterImageView" destination="s9C-8q-8uV" id="N9b-mT-EhJ"/>
+                                            <segue destination="WgW-3b-CZ7" kind="show" identifier="posterDetails" id="Xej-9q-OGB"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -287,14 +305,19 @@
                             <constraint firstItem="sC6-af-FHa" firstAttribute="bottom" secondItem="XVr-ub-vEv" secondAttribute="bottom" id="kZ0-bQ-CPD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Albums" id="N0k-10-Kor"/>
+                    <navigationItem key="navigationItem" title="Posters" id="N0k-10-Kor"/>
                     <connections>
                         <outlet property="collectionView" destination="sC6-af-FHa" id="0t6-hj-NFm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Vq-Cr-lW7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iZt-Vu-HC7">
+                    <connections>
+                        <action selector="posterDetailsTGR:" destination="O8B-6p-uTs" id="dhW-QD-pg4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="107.63358778625954" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="2053" y="824"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="KP5-gU-lmS">
@@ -332,9 +355,74 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaC-9A-gOL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-819.08396946564881" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="1126" y="824"/>
+        </scene>
+        <!--Similar Movie-->
+        <scene sceneID="xuQ-R5-liJ">
+            <objects>
+                <viewController id="xtB-12-03l" customClass="SimilarMoviesViewController" customModule="flixster" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bBy-PB-kYl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fhq-Sa-kO2">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="K4H-Jb-8Nz">
+                                    <size key="itemSize" width="384" height="552"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimilarCell" id="eTx-q2-YJS" customClass="SimilarCell" customModule="flixster" customModuleProvider="target">
+                                        <rect key="frame" x="4.666666666666667" y="0.0" width="384" height="552"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qp2-1q-sO7">
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="552"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="400-uS-jWk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="552"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="400-uS-jWk" secondAttribute="trailing" id="9Bp-JY-GeT"/>
+                                                <constraint firstAttribute="bottom" secondItem="400-uS-jWk" secondAttribute="bottom" id="TLP-XE-434"/>
+                                                <constraint firstItem="400-uS-jWk" firstAttribute="leading" secondItem="Qp2-1q-sO7" secondAttribute="leading" id="v92-5Z-P6t"/>
+                                                <constraint firstItem="400-uS-jWk" firstAttribute="top" secondItem="Qp2-1q-sO7" secondAttribute="top" id="xoP-ie-kPA"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="384" height="552"/>
+                                        <connections>
+                                            <outlet property="movieImageView" destination="400-uS-jWk" id="v0f-xJ-ca9"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oOf-Od-v9O"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fhq-Sa-kO2" firstAttribute="leading" secondItem="bBy-PB-kYl" secondAttribute="leading" id="4Ne-tT-iAv"/>
+                            <constraint firstAttribute="trailing" secondItem="fhq-Sa-kO2" secondAttribute="trailing" id="OiO-2V-hi9"/>
+                            <constraint firstItem="fhq-Sa-kO2" firstAttribute="top" secondItem="bBy-PB-kYl" secondAttribute="top" id="VQX-7Q-GVX"/>
+                            <constraint firstAttribute="bottom" secondItem="fhq-Sa-kO2" secondAttribute="bottom" id="WDc-XL-4gc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Similar Movie" id="bUH-C6-VUQ"/>
+                    <connections>
+                        <outlet property="collectionView" destination="fhq-Sa-kO2" id="bPv-ln-nVp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhf-rA-o0R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1125.9541984732823" y="1572.5352112676057"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="uNo-qL-die"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="film" catalog="system" width="128" height="93"/>
         <image name="greetingcard" catalog="system" width="108" height="128"/>

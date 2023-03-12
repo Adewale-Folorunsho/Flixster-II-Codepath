@@ -1,5 +1,5 @@
 //
-//  PostersViewController.swift
+//  SimilarMoviesViewController.swift
 //  flixster
 //
 //  Created by wale on 3/12/23.
@@ -8,9 +8,10 @@
 import UIKit
 import Nuke
 
-class PostersViewController: UIViewController, UICollectionViewDataSource {
-    
+class SimilarMoviesViewController: UIViewController , UICollectionViewDataSource{
+
     var movies: [Movie] = []
+    var movieId = 0
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -18,7 +19,9 @@ class PostersViewController: UIViewController, UICollectionViewDataSource {
         super.viewDidLoad()
         // Create a search URL for fetching albums (`entity=album`)
         collectionView.dataSource = self
-        let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=40bc027665dfe203490794907e15ed9a")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/"+String(movieId)+"/recommendations?api_key=40bc027665dfe203490794907e15ed9a")!
+        
+//        let url = URL(string: "https://api.themoviedb.org/3/movie/1035806/similar?api_key=40bc027665dfe203490794907e15ed9a")!
         let request = URLRequest(url: url)
 
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
@@ -38,6 +41,7 @@ class PostersViewController: UIViewController, UICollectionViewDataSource {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(MovieSearchResponse.self, from: data)
                 let movies = response.results
+                print(movies)
                 DispatchQueue.main.async {
 
                     // Set the view controller's tracks property as this is the one the table view references
@@ -47,7 +51,7 @@ class PostersViewController: UIViewController, UICollectionViewDataSource {
                     self?.collectionView.reloadData()
                 }
             } catch {
-                print("❌ Error parsing JSON: \(error.localizedDescription)")
+                print("❌ Error parsing JSON: \(error)")
             }
         }
 
@@ -86,7 +90,7 @@ class PostersViewController: UIViewController, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PosterCell", for: indexPath) as! PosterCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SimilarCell", for: indexPath) as! SimilarCell
 
         // Use the indexPath.item to index into the albums array to get the corresponding album
         let movie = movies[indexPath.item]
@@ -96,38 +100,11 @@ class PostersViewController: UIViewController, UICollectionViewDataSource {
 
         // Set the image on the image view of the cell
         if movie.poster_path != nil{
-            Nuke.loadImage(with: URL(string: "https://image.tmdb.org/t/p/w500/" + imageUrl!)!, into: cell.posterImageView)
+            Nuke.loadImage(with: URL(string: "https://image.tmdb.org/t/p/w500/" + imageUrl!)!, into: cell.movieImageView)
+            return cell
         }
-        
-
         return cell
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // TODO: Pt 1 - Pass the selected track to the detail view controller
-
-        // Get the cell that triggered the segue
-        if let cell = sender as? UICollectionViewCell,
-           // Get the index path of the cell from the table view
-           let indexPath = collectionView.indexPath(for: cell),
-           // Get the detail view controller
-           let detailViewController = segue.destination as? DetailViewController {
-
-            // Use the index path to get the associated track
-            let movie = movies[indexPath.row]
-
-            // Set the track on the detail view controller
-            detailViewController.movie = movie
-        }
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

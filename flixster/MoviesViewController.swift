@@ -58,7 +58,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
                 // Access the array of tracks from the `results` property
                 
                 let movies = response.results
-                print(movies)
                 
                 DispatchQueue.main.async {
 
@@ -68,7 +67,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
                     // Make the table view reload now that we have new data
                     self?.tableView.reloadData()
                 }
-                print("✅ \(movies)")
             } catch {
                 print("❌ Error parsing JSON: \(error.localizedDescription)")
             }
